@@ -35,18 +35,24 @@ public class View {
         printRecieptDigital();
     }
 
+    /**
+     * prints the reciept for interface
+     */
     public void printRecieptDigital() { // method should be in reciept, connect to systemdelegator maybe
         List<ItemDTO> currBasket = contr.getBasket();
 
         for (int i = 0; i < currBasket.size(); i++) {
             ItemDTO itemInstance = currBasket.get(i);
+            contr.calcTotal(i);
             for (int j = 0; j < itemInstance.getQuantity(); j++) {
                 System.out.print("Add 1 item with item id " + itemInstance.getID() +
                         "\nItem ID: " + itemInstance.getID() +
                         "\nItem name: " + itemInstance.getName() +
                         "\nItem cost: " + itemInstance.getCost() +
                         "\nVAT: " + itemInstance.getVAT() +
-                        "\nItem description: " + itemInstance.getDescription());
+                        "\nItem description: " + itemInstance.getDescription() +
+                        "\n\nTotal cost (incl VAT): " + contr.getTotalCost() +
+                        "\nTotal VAT: " + contr.getTotalVAT());
             }
         }
     }

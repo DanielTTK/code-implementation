@@ -56,6 +56,11 @@ public class Controller {
         return basket;
     }
 
+    /**
+     * made for view to be able to view a method from Sale inside model.
+     * 
+     * @param iteration
+     */
     public void calcTotal(int iteration) {
         sale.calcTotal(iteration);
     }
