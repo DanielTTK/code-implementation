@@ -13,7 +13,7 @@ import se.kth.iv1350.sem3.integration.ItemDTO;
  */
 public class Controller {
     private Sale sale;
-    private SystemDelegator inventory;
+    private SystemDelegator delegator;
 
     private String id;
     private int quantity;
@@ -23,7 +23,7 @@ public class Controller {
     private double totalVAT;
 
     public void controller(SystemDelegator delegator) {
-
+        this.delegator = delegator;
     }
 
     /**
@@ -79,7 +79,7 @@ public class Controller {
      * @param id
      */
     private void addMatching(String id) {
-        ItemDTO[] itemArray = inventory.getInventory();
+        ItemDTO[] itemArray = delegator.getInventory();
 
         for (int i = 0; i < itemArray.length; i++) {
             if (id == itemArray[i].getID()) {
