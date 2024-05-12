@@ -1,12 +1,22 @@
 package se.kth.iv1350.sem3.integration;
 
+import se.kth.iv1350.sem3.controller.Controller;
+
 //import java.util.ArrayList;
 //import java.util.List;
 
 public class SystemDelegator {
     private ItemDTO[] items = new ItemDTO[3];
 
-    public SystemDelegator() {
+    private Controller contr;
+
+    /**
+     * Creates new instance.
+     * 
+     * @param contr The controller that is used for all operations.
+     */
+    public SystemDelegator(Controller contr) {
+        this.contr = contr;
         addAllItems();
     }
 

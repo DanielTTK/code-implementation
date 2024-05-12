@@ -19,7 +19,8 @@ public class Main {
         View view = new View(contr);
         view.runFakeExecution();
 
-        SystemDelegator delegator = new SystemDelegator();
+        SystemDelegator delegator = new SystemDelegator(contr);
         // Controller controller = new Controller(delegator);
     }
+
 }

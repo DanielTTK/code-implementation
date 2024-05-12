@@ -1,5 +1,6 @@
-package se.kth.iv1350.sem3.startup;
+package se.kth.iv1350.sem3TESTS.startup;
 
+import se.kth.iv1350.sem3.startup.Main;
 import se.kth.iv1350.sem3.controller.Controller;
 import se.kth.iv1350.sem3.view.View;
 import org.junit.jupiter.api.Test;
