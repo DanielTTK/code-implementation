@@ -65,10 +65,20 @@ public class Controller {
         sale.calcTotal(iteration);
     }
 
+    /**
+     * made for view to be able to view a method from Sale inside model.
+     * 
+     * @return totalcost
+     */
     public double getTotalCost() {
         return sale.getTotalCost();
     }
 
+    /**
+     * made for view to be able to view a method from Sale inside model.
+     * 
+     * @return totalVAT
+     */
     public double getTotalVAT() {
         return sale.getTotalVAT();
     }
