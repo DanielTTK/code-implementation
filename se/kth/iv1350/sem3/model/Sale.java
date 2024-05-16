@@ -1,9 +1,11 @@
 package se.kth.iv1350.sem3.model;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import se.kth.iv1350.sem3.integration.ItemDTO;
+import se.kth.iv1350.sem3.integration.SystemDelegator;
 import se.kth.iv1350.sem3.controller.Controller;
 
 /**
@@ -11,11 +13,14 @@ import se.kth.iv1350.sem3.controller.Controller;
  */
 public class Sale {
     private Controller contr;
+    private SystemDelegator delegator;
     private LocalTime saleTime; // Attribut.
     private Receipt receipt;
 
     private double totalCost;
     private double totalVAT;
+
+    private List<ItemDTO> basket = new ArrayList<>(); // Should be priv?
 
     /**
      * Creates a new instance and saves time of sale.
@@ -23,6 +28,18 @@ public class Sale {
     public Sale() {
         saleTime = LocalTime.now();
         receipt = new Receipt();
+    }
+
+    /**
+     * Adds item to be proccessed for sale. Execs this when scanning items
+     * 
+     * @param id
+     * @param quantity
+     */
+    public void addItemToBasket(String id, int quantity) {
+        for (int i = 0; i <= quantity; i++) {
+            delegator.returnItem(id);
+        }
     }
 
     /**
@@ -34,13 +51,23 @@ public class Sale {
     public void calcTotal(int numberOfItemsToCalc) {
         int totalCost = 0;
         int totalVAT = 0;
-        List<ItemDTO> currBasket = contr.getBasket();
+        List<ItemDTO> currBasket = getBasket();
         for (int i = 0; i < currBasket.size(); i++) {
-            ItemDTO itemInstance = currBasket.get(numberOfItemsToCalc - 1);
+            ItemDTO itemInstance = currBasket.get(i);
 
             totalVAT += itemInstance.getCost() * (itemInstance.getVAT());
             totalCost += itemInstance.getCost() + totalVAT;
         }
+    }
+
+    /**
+     * Gets basket for other classes, mainly view.
+     * 
+     * @return array of existing items ordered. If they do not exist they
+     *         simply do not show
+     */
+    public List<ItemDTO> getBasket() {
+        return basket;
     }
 
     public double getTotalCost() {

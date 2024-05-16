@@ -15,12 +15,12 @@ public class Controller {
     private Sale sale;
     private SystemDelegator delegator;
 
-    private String id;
-    private int quantity;
-    private List<ItemDTO> basket = new ArrayList<>();
+    // private String id;
+    // private int quantity;
+    // private List<ItemDTO> basket = new ArrayList<>();
 
-    private double totalCost;
-    private double totalVAT;
+    // private double totalCost;
+    // private double totalVAT;
 
     public void controller(SystemDelegator delegator) {
         this.delegator = delegator;
@@ -34,16 +34,8 @@ public class Controller {
         sale = new Sale();
     }
 
-    /**
-     * Adds item to be proccessed for sale
-     * 
-     * @param id
-     * @param quantity
-     */
     public void addItemToBasket(String id, int quantity) {
-        for (int i = 0; i <= quantity; i++) {
-            addMatching(id);
-        }
+        sale.addItemToBasket(id, quantity);
     }
 
     /**
@@ -53,7 +45,7 @@ public class Controller {
      *         simply do not show
      */
     public List<ItemDTO> getBasket() {
-        return basket;
+        return sale.getBasket();
     }
 
     /**
@@ -81,20 +73,5 @@ public class Controller {
      */
     public double getTotalVAT() {
         return sale.getTotalVAT();
-    }
-
-    /**
-     * gets items from <code>SystemDelegator<code> --> inventory system.
-     * 
-     * @param id
-     */
-    private void addMatching(String id) {
-        ItemDTO[] itemArray = delegator.getInventory();
-
-        for (int i = 0; i < itemArray.length; i++) {
-            if (id == itemArray[i].getID()) {
-                basket.add(itemArray[i]);
-            }
-        }
     }
 }
