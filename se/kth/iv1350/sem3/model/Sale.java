@@ -15,7 +15,7 @@ import se.kth.iv1350.sem3.controller.Controller;
 public class Sale {
     private Controller contr;
     private ItemRegistry itemRegistry;
-    private LocalTime saleTime; // Attribut.
+    private LocalTime saleTime;
     private Receipt receipt;
 
     private double totalCost;
@@ -51,8 +51,8 @@ public class Sale {
      *                            to calculate total vat and amount
      */
     public void calcTotal(int numberOfItemsToCalc) {
-        int totalCost = 0;
-        int totalVAT = 0;
+        totalCost = 0;
+        totalVAT = 0;
         List<ItemDTO> currBasket = getBasket();
         for (int i = 0; i < currBasket.size(); i++) {
             ItemDTO itemInstance = currBasket.get(i);

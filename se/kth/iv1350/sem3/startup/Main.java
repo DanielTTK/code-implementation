@@ -10,7 +10,7 @@ import se.kth.iv1350.sem3.view.View;
  */
 public class Main {
     /**
-     * The main method used to start the entire application
+     * The main method is used to start the entire application
      * 
      * @params args
      */
