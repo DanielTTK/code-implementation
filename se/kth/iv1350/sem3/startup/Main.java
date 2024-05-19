@@ -14,7 +14,7 @@ public class Main {
      * 
      * @params args
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         SystemDelegator delegator = new SystemDelegator();
         Controller contr = new Controller(delegator);
         View view = new View(contr);

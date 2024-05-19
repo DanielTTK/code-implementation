@@ -6,6 +6,7 @@ import se.kth.iv1350.sem3.integration.ItemRegistry;
 
 import java.util.List;
 
+import se.kth.iv1350.sem3.integration.DoesNotExistException;
 import se.kth.iv1350.sem3.integration.ItemDTO;
 
 /**
@@ -27,7 +28,7 @@ public class Controller {
         sale = new Sale(itemRegistry);
     }
 
-    public void scanItem(String id, int quantity) {
+    public void scanItem(String id, int quantity) throws DoesNotExistException {
         sale.addItemToBasket(id, quantity);
     }
 
