@@ -38,8 +38,8 @@ public class Sale {
      * @param quantity
      */
     public void addItemToBasket(String id, int quantity) {
-        for (int i = 0; i <= quantity; i++) {
-            itemRegistry.returnItem(id);
+        for (int i = 1; i <= quantity; i++) {
+            basket.add(itemRegistry.returnItem(id));
         }
     }
 
