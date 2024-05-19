@@ -1,3 +1,1 @@
-19 maj 2024 21:54:46 | Exception: Cannot recognize identifier aaa111, since it does not exist.
-19 maj 2024 21:56:27 | Exception: Cannot recognize identifier aaa111, since it does not exist.
-19 maj 2024 21:57:06 | Exception: Cannot recognize identifier aaa111, since it does not exist.
+19 maj 2024 23:31:47 | Exception: Critical database failure
