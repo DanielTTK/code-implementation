@@ -4,7 +4,7 @@ public class pay {
     private final double totalAmount;
     private final double totalVAT;
 
-    public pay(double totalAmount, double totalVAT) {
+    public pay(double totalAmount, double totalVAT) { // make calccost here?
         this.totalAmount = totalAmount;
         this.totalVAT = totalVAT;
     }

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import se.kth.iv1350.sem3.integration.ItemDTO;
-import se.kth.iv1350.sem3.integration.SystemDelegator;
+import se.kth.iv1350.sem3.integration.ItemRegistry;
 import se.kth.iv1350.sem3.controller.Controller;
 
 /**
@@ -13,7 +13,7 @@ import se.kth.iv1350.sem3.controller.Controller;
  */
 public class Sale {
     private Controller contr;
-    private SystemDelegator delegator;
+    private ItemRegistry delegator;
     private LocalTime saleTime; // Attribut.
     private Receipt receipt;
 

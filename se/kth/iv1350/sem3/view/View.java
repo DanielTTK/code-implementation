@@ -29,8 +29,8 @@ public class View {
     public void runFakeExecution() {
         contr.startSale();
 
-        contr.addItemToBasket("abc123", 2); // finds item from contr-->integration and adds the count there
-        contr.addItemToBasket("def456", 1);
+        contr.scanItem("abc123", 2); // finds item from contr-->integration and adds the count there
+        contr.scanItem("def456", 1);
 
         printRecieptDigital();
     }
