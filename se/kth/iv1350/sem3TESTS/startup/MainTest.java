@@ -37,7 +37,7 @@ public class MainTest {
     }
 
     @Test
-    public void testUIHasStarted() {
+    public void testUIHasStarted() throws Exception {
         String[] args = null;
         Main.main(args);
         // String printout = printoutBuffer.toString();

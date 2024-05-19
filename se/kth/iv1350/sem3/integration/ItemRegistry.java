@@ -32,13 +32,13 @@ public class ItemRegistry {
      * gets items from <code>SystemDelegator<code> --> ItemRegistry
      * 
      * @param id id of product you want to get
-     * @throws ItemRegistryException gets called when something is wrong
-     *                               with database. Checked.
-     * @throws DoesNotExistException throws when identifier is not in database.
-     *                               Unchecked.
+     * @throws ItemRegistryException     gets called when something is wrong
+     *                                   with database. Checked.
+     * @throws ItemDoesNotExistException throws when identifier is not in database.
+     *                                   Unchecked.
      * 
      */
-    public ItemDTO returnItem(String id) throws DoesNotExistException {
+    public ItemDTO returnItem(String id) throws ItemDoesNotExistException {
         ItemDTO[] itemArray = getInventory();
         ItemDTO item = null;
 
@@ -61,9 +61,9 @@ public class ItemRegistry {
      * @param item
      * @throws DoesNotExistException
      */
-    private void checkIfItemExist(ItemDTO item) throws DoesNotExistException {
+    private void checkIfItemExist(ItemDTO item) throws ItemDoesNotExistException {
         if (item == null) {
-            throw new DoesNotExistException(item);
+            throw new ItemDoesNotExistException(item);
         }
     }
 

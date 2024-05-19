@@ -4,7 +4,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import se.kth.iv1350.sem3.integration.DoesNotExistException;
+import se.kth.iv1350.sem3.integration.ItemDoesNotExistException;
 import se.kth.iv1350.sem3.integration.ItemDTO;
 import se.kth.iv1350.sem3.integration.ItemRegistry;
 import se.kth.iv1350.sem3.controller.Controller;
@@ -38,7 +38,7 @@ public class Sale {
      * @param id
      * @param quantity
      */
-    public void addItemToBasket(String id, int quantity) throws DoesNotExistException {
+    public void addItemToBasket(String id, int quantity) throws ItemDoesNotExistException {
         for (int i = 1; i <= quantity; i++) {
             basket.add(itemRegistry.returnItem(id));
         }

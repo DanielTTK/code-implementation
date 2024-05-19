@@ -4,7 +4,7 @@ package se.kth.iv1350.sem3.view;
 import java.util.List;
 
 import se.kth.iv1350.sem3.controller.Controller;
-import se.kth.iv1350.sem3.integration.DoesNotExistException;
+import se.kth.iv1350.sem3.integration.ItemDoesNotExistException;
 import se.kth.iv1350.sem3.integration.ItemDTO;
 
 /**
@@ -29,7 +29,7 @@ public class View {
      * 
      * @throws DoesNotExistException exception if scanned item does not exist.
      */
-    public void runFakeExecution() throws DoesNotExistException {
+    public void runFakeExecution() throws ItemDoesNotExistException {
         contr.startSale();
 
         contr.scanItem("abc123", 2); // finds item from contr-->integration and adds the count there
