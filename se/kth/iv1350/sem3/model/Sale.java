@@ -21,7 +21,10 @@ public class Sale {
     private double totalCost;
     private double totalVAT;
 
-    private List<ItemDTO> basket = new ArrayList<>(); // Should be priv?
+    private Pay transaction;
+
+    private List<SaleObserver> saleObservers = new ArrayList<>();
+    private List<ItemDTO> basket = new ArrayList<>();
 
     /**
      * Creates a new instance and saves time of sale.
@@ -41,6 +44,7 @@ public class Sale {
     public void addItemToBasket(String id, int quantity) throws ItemDoesNotExistException {
         for (int i = 1; i <= quantity; i++) {
             basket.add(itemRegistry.returnItem(id));
+            notifyObservers(itemRegistry.returnItem(id));
         }
     }
 
@@ -60,6 +64,27 @@ public class Sale {
             totalVAT += itemInstance.getCost() * (itemInstance.getVAT());
             totalCost += itemInstance.getCost() + totalVAT;
         }
+    }
+
+    public void payment(Pay transaction) {
+        transaction.getTotal();
+        transaction.getTotalVAT();
+
+        this.transaction = transaction;
+    }
+
+    private void notifyObservers(ItemDTO soldItem) {
+        for (SaleObserver obs : saleObservers) {
+            obs.finishedSale(soldItem);
+        }
+    }
+
+    public void notifySpecificSaleObserver(SaleObserver obs) {
+        saleObservers.add(obs);
+    }
+
+    public void notifyAllSaleObservers(List<SaleObserver> observers) {
+        saleObservers.addAll(observers);
     }
 
     /**

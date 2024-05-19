@@ -1,6 +1,7 @@
 package se.kth.iv1350.sem3.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import se.kth.iv1350.sem3.integration.ItemDTO;
@@ -9,11 +10,14 @@ import se.kth.iv1350.sem3.integration.ItemRegistry;
 import se.kth.iv1350.sem3.integration.SystemDelegator;
 import se.kth.iv1350.sem3.model.*;
 
+import se.kth.iv1350.sem3.model.SaleObserver;
+
 /**
  * Only controller for this project. All calls to model pass through this class.
  */
 public class Controller {
     private ItemRegistry itemRegistry;
+    private List<SaleObserver> saleObservers = new ArrayList<>();
     private Sale sale;
 
     public Controller(SystemDelegator delegator) {
@@ -26,6 +30,7 @@ public class Controller {
      */
     public void startSale() {
         sale = new Sale(itemRegistry);
+        sale.notifyAllSaleObservers(saleObservers);
     }
 
     public void scanItem(String id, int quantity) throws ItemDoesNotExistException {
@@ -67,5 +72,14 @@ public class Controller {
      */
     public double getTotalVAT() {
         return sale.getTotalVAT();
+    }
+
+    /**
+     * Notifies this specific observer, param
+     * 
+     * @param observer
+     */
+    public void notifySpecificObserver(SaleObserver observer) {
+        saleObservers.add(observer);
     }
 }

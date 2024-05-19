@@ -1,10 +1,10 @@
 package se.kth.iv1350.sem3.model;
 
-public class pay {
+public class Pay {
     private final double totalAmount;
     private final double totalVAT;
 
-    public pay(double totalAmount, double totalVAT) { // make calccost here?
+    public Pay(double totalAmount, double totalVAT) { // make calccost here?
         this.totalAmount = totalAmount;
         this.totalVAT = totalVAT;
     }
