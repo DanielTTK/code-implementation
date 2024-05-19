@@ -38,7 +38,7 @@ public class View {
     /**
      * prints the reciept for interface
      */
-    public void printRecieptDigital() { // method should be in reciept, connect to systemdelegator maybe
+    public void printRecieptDigital() { // this method should be in reciept
         List<ItemDTO> currBasket = contr.getBasket();
 
         for (int i = 0; i < currBasket.size(); i++) {

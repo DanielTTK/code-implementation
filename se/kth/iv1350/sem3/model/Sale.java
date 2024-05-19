@@ -13,7 +13,7 @@ import se.kth.iv1350.sem3.controller.Controller;
  */
 public class Sale {
     private Controller contr;
-    private ItemRegistry delegator;
+    private ItemRegistry itemRegistry;
     private LocalTime saleTime; // Attribut.
     private Receipt receipt;
 
@@ -25,7 +25,8 @@ public class Sale {
     /**
      * Creates a new instance and saves time of sale.
      */
-    public Sale() {
+    public Sale(ItemRegistry itemRegistry) {
+        this.itemRegistry = itemRegistry;
         saleTime = LocalTime.now();
         receipt = new Receipt();
     }
@@ -38,7 +39,7 @@ public class Sale {
      */
     public void addItemToBasket(String id, int quantity) {
         for (int i = 0; i <= quantity; i++) {
-            delegator.returnItem(id);
+            itemRegistry.returnItem(id);
         }
     }
 

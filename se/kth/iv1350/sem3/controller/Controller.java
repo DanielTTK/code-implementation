@@ -4,7 +4,6 @@ import se.kth.iv1350.sem3.model.*;
 import se.kth.iv1350.sem3.integration.SystemDelegator;
 import se.kth.iv1350.sem3.integration.ItemRegistry;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import se.kth.iv1350.sem3.integration.ItemDTO;
@@ -13,18 +12,10 @@ import se.kth.iv1350.sem3.integration.ItemDTO;
  * Only controller for this project. All calls to model pass through this class.
  */
 public class Controller {
-    private SystemDelegator delegator;
     private ItemRegistry itemRegistry;
     private Sale sale;
 
-    // private String id;
-    // private int quantity;
-    // private List<ItemDTO> basket = new ArrayList<>();
-
-    // private double totalCost;
-    // private double totalVAT;
-
-    public void controller(SystemDelegator delegator) {
+    public Controller(SystemDelegator delegator) {
         this.itemRegistry = delegator.getItemRegistry();
     }
 
@@ -33,7 +24,7 @@ public class Controller {
      * during a sale. Ex. regItem.
      */
     public void startSale() {
-        sale = new Sale();
+        sale = new Sale(itemRegistry);
     }
 
     public void scanItem(String id, int quantity) {
