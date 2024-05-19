@@ -1,6 +1,4 @@
-package se.kth.iv1350.sem3.model;
-
-import se.kth.iv1350.sem3.integration.ItemDTO;
+package se.kth.iv1350.sem3.integration;
 
 public class DoesNotExistException extends Exception {
     private ItemDTO itemThatDoesNotExist;
@@ -9,8 +7,8 @@ public class DoesNotExistException extends Exception {
      * Instanciates with a message specifiying what item does not exist. Maybe it
      * ran out.
      */
-    public DoesNotExistException(ItemDTO itemThatDoesNotExist) {
-        super("Cannot recognize identifier" + itemThatDoesNotExist.getID() + ", since it does not exist.");
+    DoesNotExistException(ItemDTO itemThatDoesNotExist) {
+        super("Cannot recognize identifier " + itemThatDoesNotExist.getID() + ", since it does not exist.");
         this.itemThatDoesNotExist = itemThatDoesNotExist;
     }
 
