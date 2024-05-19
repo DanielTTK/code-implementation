@@ -42,28 +42,33 @@ public class ItemRegistry {
         ItemDTO[] itemArray = getInventory();
         ItemDTO item = null;
 
-        if (id.equals("err111")) {
-            throw new ItemRegistryException("Critical database failure");
-        }
+        inducedDatabaseError(id);
 
         for (int i = 0; i < itemArray.length; i++) {
             if (id == itemArray[i].getID()) {
                 item = itemArray[i];
             }
         }
-        checkIfItemExist(item);
+        checkIfItemExist(item, id);
         return item;
+    }
+
+    private void inducedDatabaseError(String id) {
+        if (id.equals("err111")) {
+            throw new ItemRegistryException("Critical database failure");
+        }
     }
 
     /**
      * Checks if item is null or not. If null throws exception detailed in throws.
      * 
-     * @param item
+     * @param item   Item object to check
+     * @param itemID Searched id
      * @throws DoesNotExistException
      */
-    private void checkIfItemExist(ItemDTO item) throws ItemDoesNotExistException {
+    private void checkIfItemExist(ItemDTO item, String itemID) throws ItemDoesNotExistException {
         if (item == null) {
-            throw new ItemDoesNotExistException(item);
+            throw new ItemDoesNotExistException(itemID);
         }
     }
 
