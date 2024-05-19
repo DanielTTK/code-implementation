@@ -7,7 +7,7 @@ public class ItemDoesNotExistException extends Exception {
      * Instanciates with a message specifiying what item does not exist. Maybe it
      * ran out.
      */
-    ItemDoesNotExistException(String itemID) {
+    public ItemDoesNotExistException(String itemID) {
         super("Cannot recognize identifier " + itemID + ", since it does not exist.");
         this.itemID = itemID;
     }

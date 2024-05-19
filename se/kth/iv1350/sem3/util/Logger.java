@@ -11,7 +11,7 @@ import java.time.format.FormatStyle;
  * Log class, responsible for the log.
  */
 public class Logger {
-    private static final String LOG_FILE_NAME = "log.txt";
+    private static final String LOG_FILE_NAME = "sem3-log.txt";
     private PrintWriter logPrint;
 
     public Logger() throws IOException {

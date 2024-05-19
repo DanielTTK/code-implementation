@@ -1,22 +1,22 @@
 package se.kth.iv1350.sem3.model;
 
+import java.io.IOException;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import se.kth.iv1350.sem3.integration.ItemDoesNotExistException;
 import se.kth.iv1350.sem3.integration.ItemDTO;
+import se.kth.iv1350.sem3.integration.ItemDoesNotExistException;
 import se.kth.iv1350.sem3.integration.ItemRegistry;
-import se.kth.iv1350.sem3.controller.Controller;
 
 /**
  * a sale made by one customer.
  */
 public class Sale {
-    private Controller contr;
+    // private Controller contr;
     private ItemRegistry itemRegistry;
     private LocalTime saleTime;
-    private Receipt receipt;
+    // private Receipt receipt;
 
     private double totalCost;
     private double totalVAT;
@@ -29,7 +29,7 @@ public class Sale {
     public Sale(ItemRegistry itemRegistry) {
         this.itemRegistry = itemRegistry;
         saleTime = LocalTime.now();
-        receipt = new Receipt();
+        // receipt = new Receipt();
     }
 
     /**

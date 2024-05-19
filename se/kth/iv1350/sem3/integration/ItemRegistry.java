@@ -1,5 +1,7 @@
 package se.kth.iv1350.sem3.integration;
 
+import java.io.IOException;
+
 //import se.kth.iv1350.sem3.controller.Controller;
 //import se.kth.iv1350.sem3.model.Sale;
 
@@ -36,7 +38,6 @@ public class ItemRegistry {
      *                                   with database. Checked.
      * @throws ItemDoesNotExistException throws when identifier is not in database.
      *                                   Unchecked.
-     * 
      */
     public ItemDTO returnItem(String id) throws ItemDoesNotExistException {
         ItemDTO[] itemArray = getInventory();

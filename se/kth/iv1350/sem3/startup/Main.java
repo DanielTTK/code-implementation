@@ -1,5 +1,7 @@
 package se.kth.iv1350.sem3.startup;
 
+import java.io.IOException;
+
 import se.kth.iv1350.sem3.controller.Controller;
 import se.kth.iv1350.sem3.integration.SystemDelegator;
 import se.kth.iv1350.sem3.view.View;
@@ -15,10 +17,16 @@ public class Main {
      * @params args
      */
     public static void main(String[] args) throws Exception {
-        SystemDelegator delegator = new SystemDelegator();
-        Controller contr = new Controller(delegator);
-        View view = new View(contr);
-        view.runFakeExecution();
+        try {
+            SystemDelegator delegator = new SystemDelegator();
+            Controller contr = new Controller(delegator);
+            View view = new View(contr);
+            view.runFakeExecution();
+        } catch (IOException exception) {
+            System.out.println("Application crashed on startup");
+            exception.printStackTrace();
+        }
+
     }
 
 }

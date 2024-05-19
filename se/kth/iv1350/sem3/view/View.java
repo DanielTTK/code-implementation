@@ -1,11 +1,13 @@
 package se.kth.iv1350.sem3.view;
 
+import java.io.IOException;
 //import java.util.ArrayList;
 import java.util.List;
 
 import se.kth.iv1350.sem3.controller.Controller;
-import se.kth.iv1350.sem3.integration.ItemDoesNotExistException;
+import se.kth.iv1350.sem3.util.Logger;
 import se.kth.iv1350.sem3.integration.ItemDTO;
+import se.kth.iv1350.sem3.integration.ItemDoesNotExistException;
 
 /**
  * This is a placeholder for the real view. Contains hardcoded execution,
@@ -13,14 +15,19 @@ import se.kth.iv1350.sem3.integration.ItemDTO;
  */
 public class View {
     private Controller contr;
+    private Logger logger;
+    private ErrorDisplay errorWriter = new ErrorDisplay();
 
     /**
      * Creates new instance.
      * 
      * @param contr The controller that is used for all operations.
+     * @throws IOException if logger fails.
      */
-    public View(Controller contr) { // good example of constructor that doesnt need test
+    public View(Controller contr) throws IOException { // good example of constructor that doesnt need test
         this.contr = contr;
+
+        this.logger = new Logger();
     }
 
     /**

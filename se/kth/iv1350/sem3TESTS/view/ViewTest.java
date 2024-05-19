@@ -1,12 +1,14 @@
 package se.kth.iv1350.sem3TESTS.view;
 
-import se.kth.iv1350.sem3.view.View;
+import org.junit.jupiter.api.Test;
+
 import se.kth.iv1350.sem3.controller.Controller;
 import se.kth.iv1350.sem3.integration.ItemDoesNotExistException;
 import se.kth.iv1350.sem3.integration.SystemDelegator;
-import org.junit.jupiter.api.Test;
+import se.kth.iv1350.sem3.view.View;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.PrintStream;
 
 import org.junit.jupiter.api.AfterEach;
@@ -19,7 +21,7 @@ public class ViewTest {
     private PrintStream originalSysOut;
 
     @BeforeEach
-    public void setUp() {
+    public void setUp() throws IOException {
         SystemDelegator delegator = new SystemDelegator();
         Controller contr = new Controller(delegator);
         instanceToTest = new View(contr);
