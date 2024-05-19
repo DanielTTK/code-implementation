@@ -29,13 +29,17 @@ public class ItemRegistry {
     }
 
     /**
-     * gets items from <code>SystemDelegator<code> --> inventory system.
+     * gets items from <code>SystemDelegator<code> --> ItemRegistry
      * 
      * @param id
      */
     public ItemDTO returnItem(String id) {
         ItemDTO[] itemArray = getInventory();
         ItemDTO item = null;
+
+        if (id.equals("err111")) {
+            throw new ItemRegistryException("Critical database failure");
+        }
 
         for (int i = 0; i < itemArray.length; i++) {
             if (id == itemArray[i].getID()) {
