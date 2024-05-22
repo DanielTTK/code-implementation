@@ -1,6 +1,5 @@
 package se.kth.iv1350.sem3.controller;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 

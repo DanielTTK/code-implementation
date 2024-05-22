@@ -1,6 +1,5 @@
 package se.kth.iv1350.sem3.model;
 
-import java.io.IOException;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,11 +40,34 @@ public class Sale {
      * @param id
      * @param quantity
      */
-    public void addItemToBasket(String id, int quantity) throws ItemDoesNotExistException {
-        for (int i = 1; i <= quantity; i++) {
-            basket.add(itemRegistry.returnItem(id));
-            notifyObservers(itemRegistry.returnItem(id));
+    public void addItemToBasket(String id, int quantity) throws ItemDoesNotExistException { // Decide if exception
+                                                                                            // should keep propegating
+                                                                                            // upwards or if you want to
+                                                                                            // catch it here. Why?
+        boolean itemExists = false;
+        for (int i = 0; i < basket.size(); i++) {
+            ItemDTO itemInstance = basket.get(i);
+            if (id == itemInstance.getID()) {
+                basket.set(i, itemAddedQuantity(itemInstance, quantity));
+                itemExists = true;
+            }
         }
+        if (!itemExists) {
+            basket.add(itemRegistry.returnItem(id));
+        }
+    }
+
+    /**
+     * Adds 1 to itemDTO quantity value.
+     * 
+     * @param item
+     * @return a copy of <code>item</code> but with 1 added quantity
+     */
+    ItemDTO itemAddedQuantity(ItemDTO item, int quantity) {
+        ItemDTO newItem = new ItemDTO(item.getID(), item.getName(), item.getDescription(),
+                (item.getQuantity() + quantity), item.getCost(), item.getVAT());
+
+        return newItem;
     }
 
     /**
@@ -61,7 +83,7 @@ public class Sale {
         for (int i = 0; i < currBasket.size(); i++) {
             ItemDTO itemInstance = currBasket.get(i);
 
-            totalVAT += itemInstance.getCost() * (itemInstance.getVAT());
+            totalVAT += itemInstance.getCost() * itemInstance.getQuantity() * itemInstance.getVAT();
             totalCost += itemInstance.getCost() + totalVAT;
         }
     }
@@ -79,7 +101,7 @@ public class Sale {
         }
     }
 
-    public void notifySpecificSaleObserver(SaleObserver obs) {
+    public void notifySpecificSaleObserver(SaleObserver obs) { // add javadocs to these
         saleObservers.add(obs);
     }
 

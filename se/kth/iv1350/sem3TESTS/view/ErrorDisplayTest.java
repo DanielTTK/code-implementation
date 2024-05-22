@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 
 import se.kth.iv1350.sem3.controller.Controller;
 import se.kth.iv1350.sem3.integration.ItemDoesNotExistException;
-import se.kth.iv1350.sem3.integration.ItemRegistryException;
 import se.kth.iv1350.sem3.integration.SystemDelegator;
 import se.kth.iv1350.sem3.view.ErrorDisplay;
 

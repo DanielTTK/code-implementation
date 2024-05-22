@@ -1,7 +1,6 @@
 package se.kth.iv1350.sem3TESTS.util;
 
 import se.kth.iv1350.sem3.util.Logger;
-import se.kth.iv1350.sem3.view.ErrorDisplay;
 import se.kth.iv1350.sem3.integration.*;
 import se.kth.iv1350.sem3.controller.Controller;
 
@@ -12,9 +11,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -66,16 +62,11 @@ public class LoggerTest {
         String line = null;
         while ((line = txt.readLine()) != null) {
             if (line.contains(searched)) {
+                txt.close();
                 return true;
             }
         }
         txt.close();
         return false;
-    }
-
-    private String time() {
-        LocalDateTime time = LocalDateTime.now();
-        DateTimeFormatter format = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM);
-        return time.format(format);
     }
 }

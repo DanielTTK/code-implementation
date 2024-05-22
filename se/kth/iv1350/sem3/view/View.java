@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.List;
 
 import se.kth.iv1350.sem3.controller.Controller;
-import se.kth.iv1350.sem3.util.Logger;
+//import se.kth.iv1350.sem3.util.Logger;
 import se.kth.iv1350.sem3.integration.ItemDTO;
 import se.kth.iv1350.sem3.integration.ItemDoesNotExistException;
 
@@ -15,8 +15,6 @@ import se.kth.iv1350.sem3.integration.ItemDoesNotExistException;
  */
 public class View {
     private Controller contr;
-    private Logger logger;
-    private ErrorDisplay errorWriter = new ErrorDisplay();
 
     /**
      * Creates new instance.
@@ -26,8 +24,6 @@ public class View {
      */
     public View(Controller contr) throws IOException { // good example of constructor that doesnt need test
         this.contr = contr;
-
-        this.logger = new Logger();
     }
 
     /**
@@ -42,6 +38,7 @@ public class View {
         contr.scanItem("abc123", 2); // finds item from contr-->integration and adds the count there
         contr.scanItem("def456", 1);
 
+        System.out.println("");
         printRecieptDigital();
     }
 
@@ -54,11 +51,11 @@ public class View {
         for (int i = 0; i < currBasket.size(); i++) {
             ItemDTO itemInstance = currBasket.get(i);
             contr.calcTotal(i);
-            System.out.print("Add 1 item with item id " + itemInstance.getID() +
+            System.out.print("Add " + itemInstance.getQuantity() + "item with item id " + itemInstance.getID() +
                     "\nItem ID: " + itemInstance.getID() +
                     "\nItem name: " + itemInstance.getName() +
-                    "\nItem cost: " + itemInstance.getCost() +
-                    "\nVAT: " + itemInstance.getVAT() +
+                    "\nItem cost: " + itemInstance.getCost() + " x 2" +
+                    "\nVAT: " + itemInstance.getVAT() + " x 2" +
                     "\nItem description: " + itemInstance.getDescription() +
                     "\n\nTotal cost (incl VAT): " + contr.getTotalCost() +
                     "\nTotal VAT: " + contr.getTotalVAT() + "\n\n");

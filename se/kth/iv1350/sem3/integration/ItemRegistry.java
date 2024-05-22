@@ -1,7 +1,5 @@
 package se.kth.iv1350.sem3.integration;
 
-import java.io.IOException;
-
 //import se.kth.iv1350.sem3.controller.Controller;
 //import se.kth.iv1350.sem3.model.Sale;
 
